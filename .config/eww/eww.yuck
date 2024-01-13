@@ -1,0 +1,79 @@
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    (music)
+    (sidestuff)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" :exclusive true
+    (metric :label "🔊"
+            :value volume
+            :onchange "")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label { battery }
+            :value { battery }
+            :onchange "")
+    time))
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+       :spacing 8
+    (button :onclick "hyprctl dispatch workspace 1" '⬤')
+    (button :onclick "hyprctl dispatch workspace 2" '⬤')
+    (button :onclick "hyprctl dispatch workspace 3" '⬤')
+    (button :onclick "hyprctl dispatch workspace 4" '⬤')
+    (button :onclick "hyprctl dispatch workspace 5" '⬤')
+    (button :onclick "hyprctl dispatch workspace 6" '⬤')
+    (button :onclick "hyprctl dispatch workspace 7" '⬤')
+    (button :onclick "hyprctl dispatch workspace 8" '⬤')
+    (button :onclick "hyprctl dispatch workspace 9" '⬤')))
+
+(defwidget music []
+  (box
+    :class "music"
+    (button 
+        :orientation "h"
+        :space-evenly false
+        :halign "center"
+      {music != "" ? "🎵${music}" : ""})))
+
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (button :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format ' {{ artist }} - {{ title }}' || true")
+
+(defpoll volume :interval "1s"
+  "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }' | awk -F'%' '{ print $1 }'")
+(defpoll battery :interval "1m"
+  "upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep 'percentage' | awk '{ print $2 }' | awk -F'%' '{ print $1 }'")
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "10px"
+                      :width "98%"
+                      :height "10px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "1%")
+  :exclusive true
+  (bar))
