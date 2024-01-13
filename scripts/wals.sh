@@ -5,5 +5,5 @@ swww img ${image}
 wal -i ${image}
 rm ~/.config/vesktop/themes/pywal-discord-modified.theme.css
 pywal-discord -p ~/.config/vesktop/themes/ -t modified
-cp ~/.cache/wal/colors-waybar.css /home/sasikuttan2163/.config/wlogout/colors-waybar.css
+cp ~/.cache/wal/colors-waybar.css ~/.config/wlogout/colors-waybar.css
 
