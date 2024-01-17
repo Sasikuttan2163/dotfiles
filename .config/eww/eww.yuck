@@ -1,6 +1,6 @@
 (defwidget bar []
   (centerbox :orientation "h"
-    (workspaces)
+    (indicator)
     (music)
     (sidestuff)))
 
@@ -8,12 +8,14 @@
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" :exclusive true
     (metric :label "🔊"
             :value volume
+            :draw-value true
             :onchange "")
     (metric :label ""
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
     (metric :label { battery }
             :value { battery }
+            :draw-value true
             :onchange "")
     time))
 
@@ -54,8 +56,17 @@
            :value value
            :onchange onchange)))
 
+(defwidget indicator []
+  (box
+    :class "work"
+    (button :class "but"
+            :halign "start"
+            " ${works} ")
+  )
+)
 
-
+(defpoll works :interval "1s"
+"hyprctl activeworkspace | grep 'workspace ID' | awk -F' ' '{ print $3 }'")
 (deflisten music :initial ""
   "playerctl --follow metadata --format ' {{ artist }} - {{ title }}' || true")
 
@@ -63,8 +74,8 @@
   "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }' | awk -F'%' '{ print $1 }'")
 (defpoll battery :interval "1m"
   "upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep 'percentage' | awk '{ print $2 }' | awk -F'%' '{ print $1 }'")
-(defpoll time :interval "10s"
-  "date '+%H:%M %b %d, %Y'")
+(defpoll time :interval "0.5s"
+  "date '+%H:%M:%S'")
 
 (defwindow bar
   :monitor 0

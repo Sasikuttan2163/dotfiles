@@ -1,10 +1,12 @@
+
+
 * {
   all: unset; //Unsets everything so you can style everything from scratch
 }
 
 //Global Styles
 .bar {
-  background: rgb(58, 58, 58, 0.5);
+  background: rgba(58, 58, 58, 0.171);
   // color: #b0b4bc;
   padding: 15px;
   border-radius:10px;
@@ -40,6 +42,11 @@
   color: #D35D6E;
 }
 
-.workspaces button:hover {
+.work button:hover {
+  transition-property: color;
+  transition-timing-function: cubic-bezier(0.05, 0.9, 0.1, 1.05);
+  transition-duration: 1s;
+  border: #000000;
   color: #D35D6E;
+  border-radius: 50%;
 }
