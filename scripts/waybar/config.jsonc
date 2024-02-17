@@ -1,0 +1,143 @@
+{
+	"layer": "top",
+	"position": "bottom",
+	"margin": "-5 8 3 8",
+	"modules-left": [
+		"hyprland/workspaces"
+	],
+	"modules-center": [
+		"clock"
+	],
+	"modules-right": [
+		// "custom/waybar-mpris",
+		"tray",
+		"cpu",
+		"memory",
+		"network",
+		"battery",
+		"bluetooth"
+	],
+	//////////////////////////////////
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"1": "一",
+			"2": "二",
+			"3": "三",
+			"4": "四",
+			"5": "五",
+			"6": "六",
+			"7": "七",
+			"8": "八",
+			"9": "九"
+		},
+		"format-active": " {icon} ",
+		"on-click": "activate"
+	},
+	"tray": {
+		"spacing": 10
+	},
+	"clock": {
+		"format": "  {:%H:%M}",
+		"format-alt": "{:%A, %B %d, %Y (%R)}  ",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+	"memory": {
+		"interval": 10,
+		"format": "☰\n{used:0.1f}G"
+	},
+	"network": {
+		"interval": 5,
+		"tooltip-format": "{essid}({signalStrength}%) - {frequency}MHz\n{ifname} - {ipaddr}\n{bandwidthUpBytes}  - {bandwidthDownBytes} ",
+		"format": "{icon}{essid}",
+		"format-wifi": " \n{signalStrength}%",
+		"format-alt": " \n{essid}",
+		"format-ethernet": "\n{ipaddr}/{cidr}",
+		"format-disconnected": "⠀N/A"
+	},
+	"cava": {
+		// "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+		"framerate": 60,
+		"autosens": 0,
+		"sensitivity": 5,
+		"bars": 14,
+		"lower_cutoff_freq": 50,
+		"higher_cutoff_freq": 10000,
+		"method": "pulse",
+		"source": "auto",
+		"stereo": true,
+		"reverse": false,
+		"bar_delimiter": 0,
+		"monstercat": false,
+		"waves": false,
+		"noise_reduction": 0.77,
+		"input_delay": 2,
+		"format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+		"actions": {
+					"on-click-right": "mode"
+					}
+	},
+	"battery": {
+		"bat": "BAT1",
+		"interval": 15,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format-time": "{H}:{m} h",
+		"format-charging": " {capacity}%\n{time}",
+		"format-full": "\n{capacity}%",
+		"format": "{icon} {capacity}%\n{time}",
+		"tooltip-format": " {timeTo}\n🗲 {power}",
+		"format-icons": ["", "", "", "", ""],
+	},
+	"bluetooth": {
+		"format": " {status}",
+		"format-disabled": "",
+		"format-connected": "\n{device_alias}",
+		"format-connected-battery": " {device_battery_percentage}%\n{device_alias} ",
+		// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+	},
+	"custom/waybar-mpris": {
+		"return-type": "json",
+		"exec": "waybar-mpris --position --autofocus",
+		"on-click": "waybar-mpris --send toggle",
+			"on-click-right": "waybar-mpris --send player-next",
+		// The options below will switch the selected player on scroll
+			// "on-scroll-up": "waybar-mpris --send player-next",
+			// "on-scroll-down": "waybar-mpris --send player-prev",
+		// The options below will go to next/previous track on scroll
+			// "on-scroll-up": "waybar-mpris --send next",
+			// "on-scroll-down": "waybar-mpris --send prev",
+		"escape": true,
+	},
+	"cpu": {
+		"interval": 2,
+		"format": "\n{}%",
+	}
+}

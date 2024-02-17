@@ -9,7 +9,7 @@ case $1 in
     wl-copy < /tmp/unsaved.png
     EDIT="$(dunstify -a "Skreenshot" --icon=/tmp/unsaved.png -A Y,Edit "Screenshot copied! 🎉")"
     case $EDIT in
-        Y) satty --filename /tmp/unsaved.png --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+        Y) satty --filename /tmp/unsaved.png --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png --copy-command wl-copy
         exit;;
     esac
     exit;;
@@ -23,7 +23,7 @@ case $1 in
     wl-copy < /tmp/unsaved.png
     EDIT="$(dunstify -a "Skreenshot" --icon=/tmp/unsaved.png -A Y,Edit "Screenshot copied! 🎉")"
     case $EDIT in
-        Y) satty --filename /tmp/unsaved.png --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+        Y) satty --filename /tmp/unsaved.png --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png --copy-command wl-copy
         exit;;
     esac    
     exit;;

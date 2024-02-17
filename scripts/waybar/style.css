@@ -1,0 +1,95 @@
+@import url("colors-waybar.css");
+* {
+    font-family: "Space Mono", "Font Awesome 6 Pro";
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.316);
+    border-radius: 5px;
+}
+
+#workspaces{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-left: 25px;
+}
+#workspaces button{
+    background-color: transparent;
+    border-radius: 55px;
+    margin-right: 10px;
+    padding-right: 15px;
+    padding-left : 15px;
+    font-weight: bolder;
+    color: 	#383838;
+}
+
+#workspaces button.active{
+    color: @color1;
+}
+
+@keyframes critical {
+    25% {
+        background-color: #221010;
+        color: #df7373;
+    }
+    50% {
+        background-color: transparent;
+        color: @color1;
+    }
+}
+@keyframes charging {
+    50% {
+        color: #79c06b;
+        text-shadow: 0 0 10px #30ff07;
+        
+    }
+    100% {
+        background-color: transparent;
+        color: 	@color1;
+    }
+}
+
+#clock,
+#memory,
+#network,
+#tray,
+#cava,
+#bluetooth,
+#cpu,
+#battery {
+    background-color: transparent;
+    padding: 0 1px;
+    color: 	@color1;
+    font-weight : bolder;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+#clock {
+    font-size: 20px;
+}
+#battery.charging {
+    animation-name: charging;
+    animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    animation-iteration-count: infinite;
+    animation-duration: 4000ms;
+}
+
+#network.ethernet.wifi {
+    animation-name: charging;
+    animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    animation-iteration-count: infinite;
+    animation-duration: 4000ms;
+}
+
+#battery.critical {
+    animation-name: critical;
+    animation-timing-function: cubic-bezier(1, 0.25, 0.75, 1);
+    animation-iteration-count: infinite;
+    animation-duration: 3000ms;
+}
