@@ -1,0 +1,40 @@
+window.bar {{
+    background-color: {background};
+    color: {background};
+}}
+
+button {{
+    min-width: 0;
+    padding-top: 10;
+    padding-bottom: 10;
+    background-color: {foreground};
+}}
+
+button:active {{
+    background-color: {background};
+}}
+
+button:hover {{
+    border-bottom: 3px solid {color0};
+}}
+
+label {{
+    font-weight: bold;
+}}
+
+.workspaces button.focused {{
+    border-bottom: 10px solid {background};
+}}
+
+.client-title {{
+    color: {color2};
+}}
+
+.notification {{
+    color: yellow;
+}}
+
+progress,
+highlight {{
+    min-height: 8px;
+}}

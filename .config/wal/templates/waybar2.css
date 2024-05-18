@@ -1,0 +1,137 @@
+* {{
+    font-family: "Dosis", "Font Awesome 6 Pro";
+    font-size: 14px;
+}}
+
+window#waybar {{
+    background-color:  transparent;/*alpha(shade(mix({color0}, {color3}, 0.6), 0.9), 0.31);*/
+    border-radius: 10px;
+}}
+
+#workspaces{{
+    /* margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-left: 10px; */
+    
+}}
+#workspaces button{{
+    background-color: transparent;
+    /* border-radius: 55px;
+    margin-right: 10px; */
+    
+    font-weight: bolder; 
+    color: 	alpha({color13}, 0.4);
+    
+}}
+
+#workspaces button.active{{
+    color: shade({color13}, 1.2);
+    background-color: alpha({color13}, 0.4);
+    margin: 5px 5px 5px 5px;
+    padding: 0px 5px 0px 5px;
+    border-radius: 6px;
+}}
+
+@keyframes critical {{
+    25% {{
+        background-color: #221010;
+        color: {color8};
+    }}
+    50% {{
+        background-color: transparent;
+        color: {color1};
+    }}
+}}
+@keyframes charging {{
+    10% {{
+        color: {background};
+        background-color:{color12};
+        text-shadow: 0 0 10px #ffffff;
+        
+    }}
+    100% {{
+        background-color: transparent;
+        color: 	{color12};
+    }}
+}}
+
+.modules-left{{
+    background-color: alpha(shade(mix({color4}, {color7}, 0.3), 0.9), 0.11);
+    border-radius: 10px;
+    /* margin: 3px 3px 0px 3px; */
+}}
+.modules-right{{
+    background-color: alpha(shade(mix({color4}, {color7}, 0.3), 1.3), 0.13);
+    border-radius: 10px;
+    /* margin: 3px 3px 0px 3px; */
+    padding: 2px 2px 2px 2px;
+}}
+.modules-center{{
+    background-color: alpha(shade(mix({color4}, {color7}, 0.3), 0.9), 0.13);
+    border-radius: 10px;
+    /* margin: 3px 3px 0px 3px; */
+    /* padding: 3px 3px 3px 3px; */
+}}
+#clock {{
+    color: shade({color13}, 1.2);
+    /* margin: 3px 3px 3px 3px; */
+    padding: 0px 5px 0px 5px;
+    font-size: 20px;
+}}
+
+#memory,
+#network,
+#tray,
+#cava,
+#bluetooth,
+#mpris,
+#cpu,
+#battery {{
+    background-color: transparent;
+    /* padding: 0 1px; */
+    font-weight : bolder;
+    margin: 3px 3px 3px 3px;
+    /* padding: 0px 3px 0px 3px; */
+    /* margin-left: 2px; */
+    border-radius: 6px;
+    color: alpha(shade(mix({color9}, {color7}, 0.4), 1.2), 0.7);
+    padding: 2px 4px 4px 4px;
+}}
+
+#bluetooth.on {{
+    color: shade({color13}, 1.2);
+}}
+
+#battery.charging {{
+    background-color: alpha(shade(mix({color3}, {color4}, 0.3), 0.9), 0.5);
+}}
+
+#network.wifi {{
+    /* animation-name: charging;
+    animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    animation-iteration-count: infinite;
+    animation-duration: 4000ms; */
+    background-color: alpha(shade(mix({color3}, {color4}, 0.3), 0.9), 0.5);
+    color: shade({color13}, 1.2);
+    /* padding: 5px 5px 0px 5px; */
+}}
+
+#battery.full {{
+    color: alpha(shade(mix({color3}, {color4}, 0.3), 0.9), 0.5);
+    /* padding: 5px 5px 0px 5px; */
+
+}}
+
+#battery.critical {{
+    animation-name: critical;
+    animation-timing-function: cubic-bezier(1, 0.25, 0.75, 1);
+    animation-iteration-count: infinite;
+    animation-duration: 3000ms;
+}}
+
+#bluetooth.connected {{
+    background-color: alpha(shade(mix({color3}, {color4}, 0.3), 0.9), 0.5);
+    color: shade({color13}, 1.2);
+    /* padding: 5px 5px 0px 5px; */
+}}

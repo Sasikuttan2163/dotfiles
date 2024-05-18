@@ -102,10 +102,8 @@
 	/* This guy just kinda overrides a bunch of stuff consistently, for free. */
 	/* Sidebar, search box, text box, etc. */
 	/* However, it makes the searchbox blend in if --bg-overlay-2 is set to the same light color. */
-	--bg-overlay-3: rgb(var(--wal-background-light));
-
 	/* Chat text box, overriden by the guy above if you use em. */
-	/* --channeltextarea-background: rgb(var(--wal-background-light)); */
+	--channeltextarea-background: transparent !important;
 	/* Used for at least the searchbox, also overriden. */
 	/* --background-tertiary: rgb(var(--wal-background)); */
 

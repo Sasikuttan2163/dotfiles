@@ -1,0 +1,164 @@
+{
+	"layer": "top",
+	"position": "bottom",
+	// "mode": "dock",
+	"margin": "0 10 4 10",
+	// "reload_style_on_change": true,
+	"modules-left": [
+		"tray",
+		"hyprland/workspaces",
+	],
+	"modules-center": [
+		// "mpris",
+		"clock",
+	],
+	"modules-right": [
+		// "custom/waybar-mpris",
+		"cpu",
+		"memory",
+		"network",
+		"battery",
+		"bluetooth"
+	],
+	//////////////////////////////////
+	"hyprland/workspaces": {
+		"format-icons": {
+			"1": "一",
+			"2": "二",
+			"3": "三",
+			"4": "四",
+			"5": "五",
+			"6": "六",
+			"7": "七",
+			"8": "八",
+			"9": "九"
+		},
+		"format": "{icon}",
+		"format-active": "{icon} -",
+		// "active-only": true
+	},
+	"tray": {
+		"spacing": 10,
+		"icon-size": 13,
+	},
+	"clock": {
+		"format": "   {:%H:%M} ",
+		"interval": 10,
+		"format-alt": " {:%A, %B %d, %Y (%R)} ",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+	"memory": {
+		"interval": 10,
+		"format": "☰\n<span baseline_shift='-7.9pt' line_height='0.3pt' size='80%'>{used:0.1f}G</span>"
+	},
+	"network": {
+		"interval": 5,
+		"tooltip-format": "{essid}({signalStrength}%) - {frequency}MHz\n{ifname} - {ipaddr}\n{bandwidthUpBytes}  - {bandwidthDownBytes} ",
+		"format": "{icon}{essid}",
+		"format-wifi": " ",
+		"format-alt": " \n{essid}",
+		"format-ethernet": "",
+		"format-disconnected": "⠀N/A"
+	},
+	"cava": {
+		// "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+		"framerate": 60,
+		"autosens": 0,
+		"sensitivity": 5,
+		"bars": 14,
+		"lower_cutoff_freq": 50,
+		"higher_cutoff_freq": 10000,
+		"method": "pulse",
+		"source": "auto",
+		"stereo": true,
+		"reverse": false,
+		"bar_delimiter": 0,
+		"monstercat": false,
+		"waves": false,
+		"noise_reduction": 0.77,
+		"input_delay": 2,
+		"format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+		"actions": {
+					"on-click-right": "mode"
+					}
+	},
+	"mpris": {
+		"format": "{player_icon} {title}",
+		"format-paused": "{status_icon} <i>{title}</i>",
+		"player-len": 10,
+		"player-icons": {
+			"default": "▶",
+			"mpv": "🎵"
+		},
+		"status-icons": {
+			"paused": "⏸"
+		},
+		// "ignored-players": ["firefox"]
+	},
+	"battery": {
+		"bat": "BAT1",
+		"interval": 15,
+		"states": {
+			"done": 99,
+			"normal": 98,
+			"warning": 30,
+			"critical": 15
+		},
+		"format-time": "{H}:{m} h",
+		"format-charging": "<span baseline_shift='-7.5pt' line_height='0.3pt' size='80%'>\n{capacity}%</span>",
+		"format": "{icon}<span baseline_shift='-7.5pt' line_height='0.3pt' size='80%'>\n{capacity}%</span>",
+		"format-full": "{icon} ",
+		"format-alt": "<span line_height='0.6pt'>{icon}\n<span size='90%'>{time} h</span></span>",
+		"tooltip-format": " {timeTo}\n🗲 {power}",
+		"format-icons": ["", "", "", "", ""],
+	},
+	"bluetooth": {
+		"format": "<span line_height='0.7pt'>\n<span size='70%'> {status}</span></span>",
+		"format-disabled": "",
+		// "format-connected": "\non",
+		"format-connected-battery": "<span ><span baseline_shift='-5.5pt' line_height='0.5pt' size='80%'>\n{device_battery_percentage}%</span></span>",
+		// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+	},
+	"custom/waybar-mpris": {
+		"return-type": "json",
+		"exec": "waybar-mpris --position --autofocus",
+		"on-click": "waybar-mpris --send toggle",
+			"on-click-right": "waybar-mpris --send player-next",
+		// The options below will switch the selected player on scroll
+			// "on-scroll-up": "waybar-mpris --send player-next",
+			// "on-scroll-down": "waybar-mpris --send player-prev",
+		// The options below will go to next/previous track on scroll
+			// "on-scroll-up": "waybar-mpris --send next",
+			// "on-scroll-down": "waybar-mpris --send prev",
+		"escape": true,
+	},
+	"cpu": {
+		"interval": 2,
+		"format": " <span baseline_shift='-7.6pt' line_height='0.3pt' size='80%'>\n {usage}%</span>",
+	}
+}

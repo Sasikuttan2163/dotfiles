@@ -1,0 +1,4 @@
+#!/bin/sh
+sudo supergfxctl -m Integrated
+sleep 5
+poweroff
